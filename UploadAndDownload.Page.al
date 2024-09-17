@@ -64,6 +64,7 @@ page 25028499 "Upload and Download files"
                 begin
                     FileName := Rec."File Name"; //Получаем имя файла
                     if FileName <> '' then Begin
+                        Rec.CalcFields("Blob File");
                         Rec."Blob File".CreateInStream(InStr); //Создаем поток для чтения
                         DownloadFromStream(InStr, 'Download a file', '', '', FileName);     //Скачиваем файл из потока
                     end;
